@@ -6,11 +6,47 @@
 -->
 <html>
 	<head>
-		<title>Generic - Solid State by HTML5 UP</title>
+		<title>Daniela Nicol Inquillay - Generic</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+		/* Estilos compartidos para botones y modales (mismo esquema que index.html) */
+		:root{--accent:#6c1b7a;--accent-dark:#55135a;--page-bg:#2e3141}
+		.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);align-items:center;justify-content:center;z-index:1000}
+		.modal.show{display:flex}
+		.modal-inner{background:var(--page-bg);padding:1rem;border-radius:8px;max-width:560px;width:94%;box-shadow:0 18px 50px rgba(0,0,0,0.5);overflow:hidden}
+		.modal-inner .modal-form{max-height:calc(100vh - 180px);overflow-y:auto;-webkit-overflow-scrolling:touch;padding-right:8px}
+		.modal-inner h3{margin:0;padding:0.85rem 1rem;background:var(--accent);color:#fff;font-size:1.05rem;border-radius:6px 6px 0 0}
+		.modal-form{padding:1rem;background:#fff;border-radius:6px;margin-top:0.6rem;color:#000}
+		.modal-form .field{margin-bottom:0.8rem}
+		.modal-form label{display:block;font-weight:700;margin-bottom:0.25rem;color:#222;font-size:0.9rem}
+		.modal-form input[type="text"],.modal-form input[type="email"],.modal-form input[type="number"],.modal-form textarea{width:100%;padding:0.55rem;border:1px solid #ccc;border-radius:6px;font-size:0.95rem;box-sizing:border-box;color:#000;background:#fff}
+		.modal-form input[readonly]{background:#f7f7f7}
+		.modal-form small{display:block;color:#666;margin-top:0.25rem}
+		.modal-form ::placeholder{color:#777}
+		.modal-form input, .modal-form textarea{color:#000}
+		.modal-form label{color:#222}
+		.modal-form .actions{display:flex;gap:0.5rem;list-style:none;padding:0;margin:0;margin-top:0.75rem;justify-content:flex-end}
+		.button, a.button, button.button, input[type="submit"], .actions .button{background:var(--accent);color:#fff;border-radius:4px;padding:0.5rem 0.9rem;display:inline-block;text-decoration:none;border:0;cursor:pointer}
+		.button:hover, a.button:hover, button.button:hover{background:var(--accent-dark)}
+		.button.secondary{background:#666}
+		a.special.open-modal{background:var(--accent);color:#fff;padding:0.5rem 0.9rem;border-radius:4px;text-decoration:none;display:inline-block}
+		a.special{background:transparent;color:var(--accent);}
+		a.special:not(.open-modal){border-bottom:0}
+		a.special.open-modal:hover{background:var(--accent-dark)}
+		#menu .menu-bio{padding:1rem;border-top:1px solid rgba(255,255,255,0.06);color:#fff}
+		#menu .menu-bio p{margin:0;font-size:0.95rem}
+		@media (max-width: 600px){
+			.modal-inner{width:96%;max-width:96%;margin:0 10px}
+			.modal-inner h3{font-size:1rem;padding:0.7rem}
+			.modal-form{padding:0.8rem}
+			.modal-form .actions{flex-direction:column;gap:0.5rem}
+			.modal-form .actions button{width:100%}
+			a.special.open-modal{display:block;width:fit-content}
+		}
+		</style>
 	</head>
 	<body class="is-preload">
 
@@ -19,7 +55,7 @@
 
 				<!-- Header -->
 					<header id="header">
-						<h1><a href="index.html">Solid State</a></h1>
+						<h1><a href="index.html">Daniela Nicol Inquillay</a></h1>
 						<nav>
 							<a href="#menu">Menu</a>
 						</nav>
@@ -32,10 +68,10 @@
 							<ul class="links">
 								<li><a href="index.html">Home</a></li>
 								<li><a href="generic.html">Generic</a></li>
-								<li><a href="elements.html">Elements</a></li>
-								<li><a href="#">Log In</a></li>
-								<li><a href="#">Sign Up</a></li>
 							</ul>
+							<div class="menu-bio">
+								<p><strong>Daniela Nicol Inquillay</strong><br />Estudiante de Ingeniería de Sistemas — Universidad Andina del Cusco. Interesada en desarrollo web y JavaScript.</p>
+							</div>
 							<a href="#" class="close">Close</a>
 						</div>
 					</nav>
@@ -44,8 +80,8 @@
 					<section id="wrapper">
 						<header>
 							<div class="inner">
-								<h2>Generic</h2>
-								<p>Phasellus non pulvinar erat. Fusce tincidunt nisl eget ipsum.</p>
+								<h2>Acerca de mí</h2>
+								<p>Hola, soy <strong>Daniela Nicol Inquillay</strong>. Estudiante de Ingeniería de Sistemas en la Universidad Andina del Cusco. Me interesa el desarrollo web, JavaScript y la creación de proyectos prácticos que resuelvan problemas reales.</p>
 							</div>
 						</header>
 
@@ -53,28 +89,10 @@
 							<div class="wrapper">
 								<div class="inner">
 
-									<h3 class="major">Lorem ipsum dolor</h3>
-									<p>Morbi mattis mi consectetur tortor elementum, varius pellentesque velit convallis. Aenean tincidunt lectus auctor mauris maximus, ac scelerisque ipsum tempor. Duis vulputate ex et ex tincidunt, quis lacinia velit aliquet. Duis non efficitur nisi, id malesuada justo. Maecenas sagittis felis ac sagittis semper. Curabitur purus leo donec vel dolor at arcu tincidunt bibendum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce ut aliquet justo. Donec id neque ipsum. Integer eget ultricies odio. Nam vel ex a orci fringilla tincidunt. Aliquam eleifend ligula non velit accumsan cursus. Etiam ut gravida sapien.</p>
-
-									<p>Vestibulum ultrices risus velit, sit amet blandit massa auctor sit amet. Sed eu lectus sem. Phasellus in odio at ipsum porttitor mollis id vel diam. Praesent sit amet posuere risus, eu faucibus lectus. Vivamus ex ligula, tempus pulvinar ipsum in, auctor porta quam. Proin nec commodo, vel scelerisque nisi scelerisque. Suspendisse id quam vel tortor tincidunt suscipit. Nullam auctor orci eu dolor consectetur, interdum ullamcorper ante tincidunt. Mauris felis nec felis elementum varius.</p>
-
-									<h3 class="major">Vitae phasellus</h3>
-									<p>Cras mattis ante fermentum, malesuada neque vitae, eleifend erat. Phasellus non pulvinar erat. Fusce tincidunt, nisl eget mattis egestas, purus ipsum consequat orci, sit amet lobortis lorem lacus in tellus. Sed ac elementum arcu. Quisque placerat auctor laoreet.</p>
-
-									<section class="features">
-										<article>
-											<a href="#" class="image"><img src="images/pic04.jpg" alt="" /></a>
-											<h3 class="major">Sed feugiat lorem</h3>
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim dapibus ultrices.</p>
-											<a href="#" class="special">Learn more</a>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic05.jpg" alt="" /></a>
-											<h3 class="major">Nisl placerat</h3>
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim dapibus ultrices.</p>
-											<a href="#" class="special">Learn more</a>
-										</article>
-									</section>
+									<h3 class="major">Datos</h3>
+									<p>Correo: nicolinquillay@gmail.com</p>
+									<p>Teléfono: 989 989 989</p>
+									<p>Intereses: Desarrollo web, JavaScript, UI/UX, proyectos estudiantiles.</p>
 
 								</div>
 							</div>
@@ -84,41 +102,35 @@
 				<!-- Footer -->
 					<section id="footer">
 						<div class="inner">
-							<h2 class="major">Get in touch</h2>
-							<p>Cras mattis ante fermentum, malesuada neque vitae, eleifend erat. Phasellus non pulvinar erat. Fusce tincidunt, nisl eget mattis egestas, purus ipsum consequat orci, sit amet lobortis lorem lacus in tellus. Sed ac elementum arcu. Quisque placerat auctor laoreet.</p>
-							<form method="post" action="#">
+							<h2 class="major">Hablemos</h2>
+							<p>¿Te interesa algún proyecto o colaboración? Escríbeme y con gusto respondo.</p>
+							<form method="post" action="#" onsubmit="return false;">
 								<div class="fields">
 									<div class="field">
-										<label for="name">Name</label>
-										<input type="text" name="name" id="name" />
+										<label for="name">Nombre</label>
+										<input type="text" name="name" id="name" placeholder="Tu nombre" />
 									</div>
 									<div class="field">
-										<label for="email">Email</label>
-										<input type="email" name="email" id="email" />
+										<label for="email">Correo</label>
+										<input type="email" name="email" id="email" placeholder="tu@correo.com" />
 									</div>
 									<div class="field">
-										<label for="message">Message</label>
-										<textarea name="message" id="message" rows="4"></textarea>
+										<label for="message">Mensaje</label>
+										<textarea name="message" id="message" rows="4" placeholder="Escribe tu mensaje"></textarea>
 									</div>
 								</div>
 								<ul class="actions">
-									<li><input type="submit" value="Send Message" /></li>
+									<li><button type="button" class="button" onclick="alert('Enviado (simulado). Gracias.')">Enviar mensaje</button></li>
 								</ul>
 							</form>
 							<ul class="contact">
-								<li class="icon solid fa-home">
-									Untitled Inc<br />
-									1234 Somewhere Road Suite #2894<br />
-									Nashville, TN 00000-0000
-								</li>
-								<li class="icon solid fa-phone">(000) 000-0000</li>
-								<li class="icon solid fa-envelope"><a href="#">information@untitled.tld</a></li>
-								<li class="icon brands fa-twitter"><a href="#">twitter.com/untitled-tld</a></li>
-								<li class="icon brands fa-facebook-f"><a href="#">facebook.com/untitled-tld</a></li>
-								<li class="icon brands fa-instagram"><a href="#">instagram.com/untitled-tld</a></li>
+								<li class="icon solid fa-phone">989 989 989</li>
+								<li class="icon solid fa-envelope"><a href="mailto:nicolinquillay@gmail.com">nicolinquillay@gmail.com</a></li>
+								<li class="icon brands fa-facebook-f"><a href="#">facebook.com</a></li>
+								<li class="icon brands fa-instagram"><a href="#">instagram.com</a></li>
 							</ul>
 							<ul class="copyright">
-								<li>&copy; Untitled Inc. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+								<li>&copy; Universidad Andina del Cusco</li><li>Diseño: <a href="http://html5up.net">HTML5 UP</a></li>
 							</ul>
 						</div>
 					</section>

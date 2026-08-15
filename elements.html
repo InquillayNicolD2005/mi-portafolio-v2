@@ -6,11 +6,41 @@
 -->
 <html>
 	<head>
-		<title>Elements - Solid State by HTML5 UP</title>
+		<title>Daniela Nicol Inquillay - Elements</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+		:root{--accent:#6c1b7a;--accent-dark:#55135a;--page-bg:#2e3141}
+		.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);align-items:center;justify-content:center;z-index:1000}
+		.modal.show{display:flex}
+		.modal-inner{background:var(--page-bg);padding:1rem;border-radius:8px;max-width:560px;width:94%;box-shadow:0 18px 50px rgba(0,0,0,0.5);overflow:hidden}
+		.modal-inner .modal-form{max-height:calc(100vh - 180px);overflow-y:auto;-webkit-overflow-scrolling:touch;padding-right:8px}
+		.modal-inner h3{margin:0;padding:0.85rem 1rem;background:var(--accent);color:#fff;font-size:1.05rem;border-radius:6px 6px 0 0}
+		.modal-form{padding:1rem;background:#fff;border-radius:6px;margin-top:0.6rem;color:#000}
+		.modal-form .field{margin-bottom:0.8rem}
+		.modal-form label{display:block;font-weight:700;margin-bottom:0.25rem;color:#222;font-size:0.9rem}
+		.modal-form input[type="text"],.modal-form input[type="email"],.modal-form input[type="number"],.modal-form textarea{width:100%;padding:0.55rem;border:1px solid #ccc;border-radius:6px;font-size:0.95rem;box-sizing:border-box;color:#000;background:#fff}
+		.modal-form input[readonly]{background:#f7f7f7}
+		.modal-form small{display:block;color:#666;margin-top:0.25rem}
+		.modal-form ::placeholder{color:#777}
+		.modal-form input, .modal-form textarea{color:#000}
+		.modal-form label{color:#222}
+		.modal-form .actions{display:flex;gap:0.5rem;list-style:none;padding:0;margin:0;margin-top:0.75rem;justify-content:flex-end}
+		.button, a.button, button.button, input[type="submit"], .actions .button{background:var(--accent);color:#fff;border-radius:4px;padding:0.5rem 0.9rem;display:inline-block;text-decoration:none;border:0;cursor:pointer}
+		.button:hover, a.button:hover, button.button:hover{background:var(--accent-dark)}
+		.button.secondary{background:#666}
+		#menu .menu-bio{padding:1rem;border-top:1px solid rgba(255,255,255,0.06);color:#fff}
+		#menu .menu-bio p{margin:0;font-size:0.95rem}
+		@media (max-width: 600px){
+			.modal-inner{width:96%;max-width:96%;margin:0 10px}
+			.modal-inner h3{font-size:1rem;padding:0.7rem}
+			.modal-form{padding:0.8rem}
+			.modal-form .actions{flex-direction:column;gap:0.5rem}
+			.modal-form .actions button{width:100%}
+		}
+		</style>
 	</head>
 	<body class="is-preload">
 
@@ -19,7 +49,7 @@
 
 				<!-- Header -->
 					<header id="header">
-						<h1><a href="index.html">Solid State</a></h1>
+						<h1><a href="index.html">Daniela Nicol Inquillay</a></h1>
 						<nav>
 							<a href="#menu">Menu</a>
 						</nav>
@@ -30,12 +60,13 @@
 						<div class="inner">
 							<h2>Menu</h2>
 							<ul class="links">
-								<li><a href="index.html">Home</a></li>
-								<li><a href="generic.html">Generic</a></li>
-								<li><a href="elements.html">Elements</a></li>
-								<li><a href="#">Log In</a></li>
-								<li><a href="#">Sign Up</a></li>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="generic.html">Generic</a></li>
 							</ul>
+							<div class="menu-bio">
+								<p><strong>Daniela Nicol Inquillay</strong><br />Estudiante de Ingeniería de Sistemas — Universidad Andina del Cusco. Interesada en desarrollo web y JavaScript.</p>
+							</div>
+
 							<a href="#" class="close">Close</a>
 						</div>
 					</nav>
@@ -386,19 +417,13 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 								</ul>
 							</form>
 							<ul class="contact">
-								<li class="icon solid fa-home">
-									Untitled Inc<br />
-									1234 Somewhere Road Suite #2894<br />
-									Nashville, TN 00000-0000
-								</li>
-								<li class="icon solid fa-phone">(000) 000-0000</li>
-								<li class="icon solid fa-envelope"><a href="#">information@untitled.tld</a></li>
-								<li class="icon brands fa-twitter"><a href="#">twitter.com/untitled-tld</a></li>
-								<li class="icon brands fa-facebook-f"><a href="#">facebook.com/untitled-tld</a></li>
-								<li class="icon brands fa-instagram"><a href="#">instagram.com/untitled-tld</a></li>
+								<li class="icon solid fa-phone">989 989 989</li>
+								<li class="icon solid fa-envelope"><a href="mailto:nicolinquillay@gmail.com">nicolinquillay@gmail.com</a></li>
+								<li class="icon brands fa-facebook-f"><a href="#">facebook.com</a></li>
+								<li class="icon brands fa-instagram"><a href="#">instagram.com</a></li>
 							</ul>
 							<ul class="copyright">
-								<li>&copy; Untitled Inc. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+								<li>&copy; Universidad Andina del Cusco</li><li>Utilizamos : <a href="http://html5up.net">HTML5 UP</a></li>
 							</ul>
 						</div>
 					</section>

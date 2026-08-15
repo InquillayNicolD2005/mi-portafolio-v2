@@ -6,11 +6,60 @@
 -->
 <html>
 	<head>
-		<title>Solid State by HTML5 UP</title>
+		<title>Daniela Nicol Inquillay - Portfolio</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+		/* Estilos para modales y botones — adaptados al color morado del index */
+		:root{--accent:#6c1b7a;--accent-dark:#55135a;--page-bg:#2e3141}
+		/* Contenedor modal */
+		.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);align-items:center;justify-content:center;z-index:1000}
+		.modal.show{display:flex}
+		/* Modal base uses the page background color */
+		.modal-inner{background:var(--page-bg);padding:1rem;border-radius:8px;max-width:560px;width:94%;box-shadow:0 18px 50px rgba(0,0,0,0.5);overflow:hidden}
+		/* Allow internal scrolling when content is tall so mouse wheel scrolls the form */
+		.modal-inner .modal-form{max-height:calc(100vh - 180px);overflow-y:auto;-webkit-overflow-scrolling:touch;padding-right:8px}
+		.modal-inner h3{margin:0;padding:0.85rem 1rem;background:var(--accent);color:#fff;font-size:1.05rem;border-radius:6px 6px 0 0}
+		/* The form itself appears as a white card inside the dark modal */
+		.modal-form{padding:1rem;background:#fff;border-radius:6px;margin-top:0.6rem;color:#000}
+		.modal-form .field{margin-bottom:0.8rem}
+		.modal-form label{display:block;font-weight:700;margin-bottom:0.25rem;color:#222;font-size:0.9rem}
+		.modal-form input[type="text"],.modal-form input[type="email"],.modal-form input[type="number"],.modal-form textarea{width:100%;padding:0.55rem;border:1px solid #ccc;border-radius:6px;font-size:0.95rem;box-sizing:border-box;color:#000;background:#fff}
+		.modal-form input[readonly]{background:#f7f7f7}
+		.modal-form small{display:block;color:#666;margin-top:0.25rem}
+		.modal-form ::placeholder{color:#777}
+		/* Asegurar que los placeholders y texto sean legibles y el texto ingresado negro */
+		.modal-form input, .modal-form textarea{color:#000}
+
+		/* Make labels inside the white card dark and bold */
+		.modal-form label{color:#222}
+		.modal-form .actions{display:flex;gap:0.5rem;list-style:none;padding:0;margin:0;margin-top:0.75rem;justify-content:flex-end}
+		/* Botones consistentes en todo el sitio */
+		.button, a.button, button.button, input[type="submit"], .actions .button{background:var(--accent);color:#fff;border-radius:4px;padding:0.5rem 0.9rem;display:inline-block;text-decoration:none;border:0;cursor:pointer}
+		.button:hover, a.button:hover, button.button:hover{background:var(--accent-dark)}
+		.button.secondary{background:#666}
+		/* Hacer que los enlaces "Ingresar" (special) luzcan como botones consistentes */
+		a.special.open-modal{background:var(--accent);color:#fff;padding:0.5rem 0.9rem;border-radius:4px;text-decoration:none;display:inline-block}
+		/* Ensure any link styled as special uses accent color */
+		a.special{background:transparent;color:var(--accent);}
+		a.special:not(.open-modal){border-bottom:0}
+		a.special.open-modal:hover{background:var(--accent-dark)}
+		/* Ajustes pequeños para el menú */
+		#menu .menu-bio{padding:1rem;border-top:1px solid rgba(255,255,255,0.06);color:#fff}
+		#menu .menu-bio p{margin:0;font-size:0.95rem}
+
+		/* Responsive: ajustar modales en pantallas pequeñas */
+		@media (max-width: 600px){
+			.modal-inner{width:96%;max-width:96%;margin:0 10px}
+			.modal-inner h3{font-size:1rem;padding:0.7rem}
+			.modal-form{padding:0.8rem}
+			.modal-form .actions{flex-direction:column;gap:0.5rem}
+			.modal-form .actions button{width:100%}
+			a.special.open-modal{display:block;width:fit-content}
+		}
+		</style>
 	</head>
 	<body class="is-preload">
 
@@ -19,7 +68,7 @@
 
 				<!-- Header -->
 					<header id="header" class="alt">
-						<h1><a href="index.html">Solid State</a></h1>
+						<h1><a href="index.html">Daniela Nicol Inquillay</a></h1>
 						<nav>
 							<a href="#menu">Menu</a>
 						</nav>
@@ -32,7 +81,10 @@
 							<ul class="links">
 								<li><a href="index.html">Home</a></li>
 								<li><a href="generic.html">Generic</a></li>
-
+							</ul>
+							<div class="menu-bio">
+								<p><strong>Daniela Nicol Inquillay</strong><br />Estudiante de Ingeniería de Sistemas — Universidad Andina del Cusco. Interesada en desarrollo web y JavaScript.</p>
+							</div>
 
 							<a href="#" class="close">Close</a>
 						</div>
@@ -70,30 +122,28 @@
 											<a href="#" class="image"><img src="images/inventario.jpg" alt="" /></a>
 											<h3 class="major">Sistema de Inventario</h3>
 											<p>HTML, CSS, JS CRUD básico con LocalStorage.</p>
-											<a href="#" class="special">Conoce más</a>
+											<a href="#" class="special open-modal" data-target="modal-inventario">Ingresar</a>
 										</article>
 										<article>
 											<a href="#" class="image"><img src="images/clon_calculadora.jpg" alt="" /></a>
 											<h3 class="major">Clon de calculadora</h3>
 											<p>JavaScrip puro Operaciones matemáticas con eval seguro.</p>
-											<a href="#" class="special">Conoce más</a>
+											<a href="#" class="special open-modal" data-target="modal-calculadora">Ingresar</a>
 										</article>
 										<article>
 											<a href="#" class="image"><img src="images/clima.png" alt="" /></a>
 											<h3 class="major">Dashboard de Clima</h3>
 											<p>Fetch API + OpenWeather Consume API REST pública.</p>
-											<a href="#" class="special">Conoce más</a>
+											<a href="#" class="special open-modal" data-target="modal-clima">Ingresar</a>
 										</article>
 										<article>
 											<a href="#" class="image"><img src="images/contraseñas.jpg" alt="" /></a>
 											<h3 class="major">Generador de contraseñas</h3>
 											<p>HTML, CSS, JS puro, crea claves seguras y las copia al portapapeles.</p>
-											<a href="#" class="special">Conoce más</a>
+											<a href="#" class="special open-modal" data-target="modal-contrasenas">Ingresar</a>
 										</article>
 									</section>
-									<ul class="actions">
-										<li><a href="#" class="button">EXPLORAR TODO</a></li>
-									</ul>
+									<!-- Botón principal eliminado por solicitud -->
 								</div>
 							</section>
 
@@ -104,8 +154,11 @@
 						<div class="inner">
 							<h2 class="major">HABLEMOS</h2>
 							<p>¿Te gusto algún proyecto? Estoy abierta a nuevas oportunidades.</p>
-							<input type="text" name="name" id="name" /><br />
-							<li><a href="#" class="button">Enviar comentario</a></li>	<br />
+							<form class="footer-contact" onsubmit="return false;">
+								<input type="text" name="name" id="name" placeholder="Tu nombre" />
+								<button type="button" class="button">Enviar comentario</button>
+							</form>
+							<br />
 
 							<ul class="contact">
 							
@@ -122,7 +175,178 @@
 
 			</div>
 
+		<!-- Modales de formulario (mínimos) -->
+		<div id="modal-inventario" class="modal" aria-hidden="true" data-project="inventario">
+			<div class="modal-inner">
+				<h3>Sistema de Inventario</h3>
+				<form class="modal-form">
+					<div class="field"><label>Nombre</label><input type="text" name="name" placeholder="Tu nombre" /></div>
+					<div class="field"><label>Email</label><input type="email" name="email" placeholder="tu@correo.com" /></div>
+					<div class="field"><label>Producto</label><input type="text" name="producto" placeholder="Nombre del producto" /></div>
+					<div class="field"><label>Cantidad</label><input type="number" name="cantidad" min="1" placeholder="Ej. 10" /></div>
+					<div class="field"><label>Observaciones</label><textarea name="nota" placeholder="Comentarios adicionales" rows="3"></textarea></div>
+					<div class="field"><small>Los envíos se guardan localmente en tu navegador.</small></div>
+					<div class="actions">
+						<button type="button" class="button" data-action="send">Enviar</button>
+						<button type="button" class="button secondary close-modal">Cerrar</button>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div id="modal-calculadora" class="modal" aria-hidden="true" data-project="calculadora">
+			<div class="modal-inner">
+				<h3>Clon de calculadora</h3>
+				<form class="modal-form">
+					<div class="field"><label>Nombre</label><input type="text" name="name" placeholder="Tu nombre" /></div>
+					<div class="field"><label>Descripción</label><input type="text" name="desc" placeholder="¿Qué quieres probar?" /><small>Por ejemplo: suma, resta, funciones especiales.</small></div>
+					<div class="field"><label>Expresión a probar</label><input type="text" name="expression" placeholder="Ej. 2+2*3" /></div>
+					<div class="field"><label>Resultado</label><input type="text" name="result" readonly placeholder="Aquí aparece el resultado" /></div>
+					<div class="actions">
+						<button type="button" class="button" data-action="calc">Probar</button>
+						<button type="button" class="button" data-action="send">Enviar</button>
+						<button type="button" class="button secondary close-modal">Cerrar</button>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div id="modal-clima" class="modal" aria-hidden="true" data-project="clima">
+			<div class="modal-inner">
+				<h3>Dashboard de Clima</h3>
+				<form class="modal-form">
+					<div class="field"><label>Ciudad</label><input type="text" name="city" placeholder="Ej. Cusco" /></div>
+					<div class="field"><label>Email</label><input type="email" name="email" placeholder="tu@correo.com" /></div>
+					<div class="field">
+						<label>Preguntas (marcar Sí o No)</label>
+						<table style="width:100%;border-collapse:collapse">
+							<tr><td>¿Se ajusta el proyecto a los objetivos de la Plataforma?</td><td style="width:120px;text-align:center"><label>Sí <input type="radio" name="q1" value="si" /></label> <label>No <input type="radio" name="q1" value="no" /></label></td></tr>
+							<tr><td>¿Cumple los criterios de explotación de la Base de Datos?</td><td style="width:120px;text-align:center"><label>Sí <input type="radio" name="q2" value="si" /></label> <label>No <input type="radio" name="q2" value="no" /></label></td></tr>
+							<tr><td>¿Está la información solicitada disponible en la Base de Datos?</td><td style="width:120px;text-align:center"><label>Sí <input type="radio" name="q3" value="si" /></label> <label>No <input type="radio" name="q3" value="no" /></label></td></tr>
+							<tr><td>¿Es correcto el diseño/metodología del estudio?</td><td style="width:120px;text-align:center"><label>Sí <input type="radio" name="q4" value="si" /></label> <label>No <input type="radio" name="q4" value="no" /></label></td></tr>
+							<tr><td>¿Es claro el plan de trabajo?</td><td style="width:120px;text-align:center"><label>Sí <input type="radio" name="q5" value="si" /></label> <label>No <input type="radio" name="q5" value="no" /></label></td></tr>
+							<tr><td>¿Es apropiada la duración del proyecto?</td><td style="width:120px;text-align:center"><label>Sí <input type="radio" name="q6" value="si" /></label> <label>No <input type="radio" name="q6" value="no" /></label></td></tr>
+						</table>
+						</div>
+						<div class="actions">
+							<button type="button" class="button" data-action="send">Enviar</button>
+							<button type="button" class="button secondary close-modal">Cerrar</button>
+						</div>
+					</form>
+			</div>
+		</div>
+		<div id="modal-contrasenas" class="modal" aria-hidden="true" data-project="contrasenas">
+			<div class="modal-inner">
+				<h3>Generador de contraseñas</h3>
+				<form class="modal-form">
+					<div class="field"><label>Usuario</label><input type="text" name="user" placeholder="Nombre de usuario" /></div>
+						<div class="field"><label>Longitud</label><input type="text" name="length" value="12" placeholder="8-24" /></div>
+					<div class="field"><label>Contraseña generada</label><input type="text" id="generated-password" readonly placeholder="Aquí aparecerá la contraseña" /></div>
+					<div class="field"><small>Al generar, la contraseña se copia al portapapeles automáticamente.</small></div>
+					<div class="actions">
+						<button type="button" class="button" data-action="generate">Generar & Copiar</button>
+						<button type="button" class="button" data-action="send">Guardar</button>
+						<button type="button" class="button secondary close-modal">Cerrar</button>
+					</div>
+				</form>
+			</div>
+		</div>
+
 		<!-- Scripts -->
+		<script>
+		// Script mínimo para abrir y cerrar modales
+		document.addEventListener('click', function(e){
+			const open = e.target.closest('.open-modal');
+			if(open){
+				e.preventDefault();
+				const id = open.getAttribute('data-target');
+				const m = document.getElementById(id);
+				if(m) m.classList.add('show');
+				return;
+			}
+			const closeBtn = e.target.closest('.close-modal');
+			if(closeBtn){
+				e.preventDefault();
+				const modal = closeBtn.closest('.modal');
+				if(modal) modal.classList.remove('show');
+				return;
+			}
+			// click en fondo para cerrar
+			if(e.target.classList && e.target.classList.contains('modal')){
+				e.preventDefault();
+				e.target.classList.remove('show');
+			}
+		});
+		// Cerrar modal al presionar Escape
+		document.addEventListener('keydown', function(e){ if(e.key === 'Escape'){ const m = document.querySelector('.modal.show'); if(m) m.classList.remove('show'); } });
+
+		// Manejo de envíos, generación de contraseñas y pruebas de calculadora
+		document.addEventListener('click', function(e){
+			const btn = e.target.closest('button');
+			if(!btn) return;
+			const action = btn.getAttribute('data-action');
+			const modalEl = btn.closest('.modal');
+			const modalInner = btn.closest('.modal-inner');
+			if(action === 'send'){
+				e.preventDefault();
+				if(!modalEl) return;
+				const project = modalEl.getAttribute('data-project') || 'generic';
+				const form = modalEl.querySelector('.modal-form');
+				const data = {};
+				Array.from(form.elements).forEach(function(el){
+					if(!el.name) return;
+					if(el.type === 'radio'){
+						if(el.checked) data[el.name] = el.value;
+						return;
+					}
+					if(el.type === 'checkbox') data[el.name] = el.checked;
+					else data[el.name] = el.value;
+				});
+				// Guardar en localStorage bajo llave por proyecto
+				const key = project + '_submissions';
+				const existing = JSON.parse(localStorage.getItem(key) || '[]');
+				existing.push({ts: Date.now(), data: data});
+				raw = JSON.stringify(existing);
+				localStorage.setItem(key, raw);
+				alert('Guardado localmente para ' + project + '.');
+				modalEl.classList.remove('show');
+				return;
+			}
+			if(action === 'generate'){
+				e.preventDefault();
+				const form = modalInner;
+				const lengthInput = form.querySelector('input[name="length"]');
+				let len = parseInt(lengthInput ? lengthInput.value : 12,10) || 12;
+				if(len < 4) len = 4; if(len>64) len = 64;
+				const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_-+=';
+				let out = '';
+				for(let i=0;i<len;i++) out += chars[Math.floor(Math.random()*chars.length)];
+				const outInput = form.querySelector('#generated-password');
+				if(outInput) outInput.value = out;
+				// copiar al portapapeles
+				if(navigator.clipboard && out){ navigator.clipboard.writeText(out).then(()=>{ alert('Contraseña copiada al portapapeles'); }); }
+				return;
+			}
+			if(action === 'calc'){
+				e.preventDefault();
+				const expInput = modalInner.querySelector('input[name="expression"]');
+				const resultInput = modalInner.querySelector('input[name="result"]');
+				if(!expInput || !resultInput) return;
+				const expr = expInput.value.trim();
+				// validar: permitir solo números y operadores básicos
+				if(!/^[0-9+\-*/(). \t]+$/.test(expr)){
+					alert('Expresión no válida. Usa sólo números y operadores + - * / ().');
+					return;
+				}
+				try{
+					// eslint-disable-next-line no-eval
+					const val = eval(expr);
+					resultInput.value = String(val);
+				}catch(err){
+					alert('Error al evaluar la expresión');
+				}
+				return;
+			}
+		});
+		</script>
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.scrollex.min.js"></script>
 			<script src="assets/js/browser.min.js"></script>

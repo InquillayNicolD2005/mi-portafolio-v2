@@ -1,83 +1,60 @@
-<!DOCTYPE HTML>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Proyecto - Formulario</title>
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <style>
-    /* Copiado de index: variables de paleta y estilos de modal/form para mantener la coherencia */
-    :root{--accent:#1e90ff;--accent-dark:#124a72;--page-bg:#071125}
-    .project-container{max-width:820px;margin:3rem auto;padding:1rem}
-    .project-header{background:var(--accent);color:#fff;padding:0.8rem;border-radius:6px}
-    .project-form{background:#fff;padding:1rem;margin-top:0.6rem;border-radius:6px;color:#000}
-    .project-form .field{margin-bottom:0.8rem}
-    .project-form label{display:block;font-weight:700;margin-bottom:0.25rem;color:#222;font-size:0.9rem}
-    .project-form input[type="text"],.project-form input[type="email"],.project-form textarea{width:100%;padding:0.55rem;border:1px solid #ccc;border-radius:6px;font-size:0.95rem;box-sizing:border-box;color:#000;background:#fff}
-    .actions{display:flex;gap:0.5rem;list-style:none;padding:0;margin:0;margin-top:0.75rem;justify-content:flex-end}
-    .button, a.button, button.button, input[type="submit"], .actions .button{background:var(--accent);color:#fff;border-radius:4px;padding:0.5rem 0.9rem;display:inline-block;text-decoration:none;border:0;cursor:pointer}
-    .button:hover, a.button:hover, button.button:hover{background:var(--accent-dark)}
-    .button.secondary{background:#666}
-    @media (max-width:600px){.project-container{margin:1rem;padding:0.6rem}.actions{flex-direction:column}}
-    </style>
-  </head>
-  <body>
-    <div class="project-container">
-      <h3 class="project-header" id="project-title">Proyecto</h3>
-      <form id="project-form" class="project-form" onsubmit="return false;">
-        <input type="hidden" name="project" id="project-input" value="" />
-        <div class="field"><label>Nombre</label><input type="text" name="name" placeholder="Tu nombre" /></div>
-        <div class="field"><label>Email</label><input type="email" name="email" placeholder="tu@correo.com" /></div>
-        <div class="field" id="extra-field"><label>Comentario</label><input type="text" name="comment" placeholder="¿Qué quieres probar?" /></div>
-        <div class="actions">
-          <button type="button" class="button" id="send-btn">Enviar</button>
-          <a href="index.html" class="button secondary">Volver</a>
-        </div>
-      </form>
-    </div>
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="theme-color" content="#071125" />
+		<title>Proyecto | Portafolio de Daniela Nicol</title>
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/portfolio.css" />
+		<link rel="stylesheet" href="assets/css/project.css" />
+	</head>
+	<body class="project-page">
+		<main class="project-page__main">
+			<div class="project-container">
+				<header class="project-intro">
+					<p class="project-intro__eyebrow">Portafolio · Proyecto</p>
+					<h1 id="project-title">Proyecto</h1>
+					<p id="project-description">Comparte tu opinión o una pregunta sobre este proyecto.</p>
+				</header>
 
-    <script>
-      function qs(name){
-        const params = new URLSearchParams(location.search);
-        return params.get(name);
-      }
-      const project = qs('project') || 'generic';
-      const titleMap = {
-        inventario: 'Sistema de Inventario',
-        calculadora: 'Clon de calculadora',
-        clima: 'Dashboard de Clima',
-        contrasenas: 'Generador de contraseñas'
-      };
-      document.getElementById('project-title').textContent = titleMap[project] || 'Proyecto';
-      document.getElementById('project-input').value = project;
+				<div class="project-demo" id="project-demo" hidden></div>
 
-      // Envío: intentar API POST a /api/submit/:project, si falla usar localStorage como fallback
-      document.getElementById('send-btn').addEventListener('click', async function(){
-        const form = document.getElementById('project-form');
-        const data = {};
-        Array.from(form.elements).forEach(function(el){ if(!el.name) return; if(el.type==='checkbox') data[el.name]=el.checked; else data[el.name]=el.value; });
+				<section class="project-panel" aria-labelledby="project-form-title">
+					<div class="project-panel__heading">
+						<h2 id="project-form-title">Deja tu comentario</h2>
+						<p>Los campos marcados son obligatorios.</p>
+					</div>
 
-        const payload = {ts: Date.now(), data: data};
+					<form id="project-form" class="project-form" novalidate>
+						<input type="hidden" name="project" id="project-input" value="" />
 
-        try{
-          const res = await fetch('/api/submit/' + encodeURIComponent(project), {
-            method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(data)
-          });
-          if(res.ok){
-            alert('Enviado al servidor para ' + project + '.');
-            return;
-          }
-        }catch(err){
-          // servidor no disponible, caer al fallback
-        }
+						<div class="project-form__fields">
+							<div class="project-field">
+								<label for="project-name">Nombre <span aria-hidden="true">*</span></label>
+								<input type="text" name="name" id="project-name" placeholder="Tu nombre" autocomplete="name" minlength="2" required />
+							</div>
+							<div class="project-field">
+								<label for="project-email">Correo electrónico <span aria-hidden="true">*</span></label>
+								<input type="email" name="email" id="project-email" placeholder="tu@correo.com" autocomplete="email" required />
+							</div>
+							<div class="project-field project-field--wide">
+								<label for="project-comment">Comentario <span aria-hidden="true">*</span></label>
+								<textarea name="comment" id="project-comment" placeholder="Escribe tu comentario o pregunta" rows="4" minlength="3" maxlength="500" required></textarea>
+							</div>
+						</div>
 
-        // Fallback: guardar en localStorage
-        const key = project + '_submissions';
-        const existing = JSON.parse(localStorage.getItem(key) || '[]');
-        existing.push(payload);
-        localStorage.setItem(key, JSON.stringify(existing));
-        alert('Servidor no disponible — guardado localmente para ' + project + '.');
-      });
-    </script>
-  </body>
+						<div class="project-actions">
+							<button type="submit" class="button primary" id="send-btn">Enviar comentario</button>
+							<a href="index.html" class="button project-back">Volver a proyectos</a>
+						</div>
+						<p class="project-status" id="project-status" role="status" aria-live="polite" aria-atomic="true"></p>
+					</form>
+				</section>
+			</div>
+		</main>
+
+		<script src="assets/js/project-demos.js"></script>
+		<script src="assets/js/project.js"></script>
+	</body>
 </html>

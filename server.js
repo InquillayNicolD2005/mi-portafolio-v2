@@ -37,4 +37,4 @@ app.get('/api/submissions/:project', (req, res) => {
   }catch(err){ res.status(500).json({error: err.message}); }
 });
 
-app.listen(PORT, () => console.log(`Server listening on https://mi-portafolio-v2.onrender.com/:${PORT}`));
+app.listen(PORT, () => console.log(`Server listening on https://mi-portafolio-v2.onrender.com`));
